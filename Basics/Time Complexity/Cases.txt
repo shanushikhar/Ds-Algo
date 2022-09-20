@@ -1,0 +1,33 @@
+Best case — represented as Big Omega or Ω(n)
+Average case — represented as Big Theta or Θ(n)
+Worst case — represented as Big O Notation or O(n)
+
+O(n^2) => Loop within Loop
+Ex=>
+function calc(params) {
+    for (let index = 0; index < params; index++) {
+        for (let index2 = 0; index2 < params; index2++) {
+            console.log(index, index2)
+        }
+    }
+}
+
+calc(10)
+-----------------------------
+
+O(n) => Proportional
+Ex =>
+function calc(params) {
+    for (let index = 0; index < params; index++) {
+        console.log(index)
+    }
+}
+
+calc(10)
+------------------------------
+
+O(log n) => Divide and conquer
+Ex=> Use in sorting
+
+------------------------------
+O(1) => constant
