@@ -40,7 +40,8 @@ class Person extends Human {
   }
 }
 
-const person = new Person();
+// person is the specific  instance of Person
+const person = new Person(); // new keyword calls the constructor
 person.printMyname();
 person.printMyGender();
 
