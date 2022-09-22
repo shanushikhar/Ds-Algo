@@ -31,3 +31,6 @@ Ex=> Use in sorting
 
 ------------------------------
 O(1) => constant
+
+
+for more example => https://www.bigocheatsheet.com/
