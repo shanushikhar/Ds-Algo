@@ -14,6 +14,7 @@ class LinkedList {
     this.tail = this.heads;
     this.length = 1;
   }
+  // Push
   push(value) {
     const newNode = new Node(value);
     if (!this.heads) {
@@ -27,6 +28,7 @@ class LinkedList {
     this.length++;
     return this;
   }
+  // Pop
 }
 
 const Linked = new LinkedList(4);
