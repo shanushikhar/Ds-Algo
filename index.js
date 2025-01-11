@@ -76,6 +76,6 @@ hashmap.set("hey", 22);
 hashmap.set("heys", 23);
 hashmap.set("heyss", 212);
 hashmap.set("apple", 12);
-hashmap.set("apples", 112);
+hashmap.set("apples", 1122);
 console.log(hashmap.get("heys"));
 console.log(hashmap.keys());
