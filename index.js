@@ -1,41 +1,81 @@
-class Arrays {
-  constructor() {
-    this.myArray = {};
-    this.length = 0;
-  }
-  push(value) {
-    this.myArray[this.length] = value;
-    this.length++;
-    return this.myArray;
-  }
-  pop() {
-    if (this.length) {
-      let temp = this.myArray[this.length - 1];
-      delete this.myArray[this.length - 1];
-      this.length--;
-      return temp;
-    }
-    return undefined;
+class Hashmap {
+  constructor(size) {
+    this.data = new Array(size);
   }
 
-  delete(index) {
-    for (let i = index; i < this.length - 1; i++) {
-      this.myArray[i] = this.myArray[i + 1];
+  _hash(key) {
+    let hashValue = 0;
+    for (let i = 0; i < key.length; i++) {
+      hashValue = (hashValue + key.charCodeAt(i) * i) % this.data.length;
     }
-    delete this.myArray[this.length - 1];
-    this.length--;
+    return hashValue;
+  }
+
+  set(key, value) {
+    let hashValue = this._hash(key);
+    if (!this.data[hashValue]) {
+      this.data[hashValue] = [];
+    }
+    this.data[hashValue].push([key, value]);
+
+    return this.data;
+  }
+
+  get(key) {
+    let hashValue = this._hash(key);
+    const currentBucket = this.data[hashValue];
+    if (currentBucket) {
+      for (let i = 0; i < currentBucket.length; i++) {
+        if (currentBucket[i][0] === key) {
+          return currentBucket[i][1];
+        }
+      }
+
+      //   for (let [indexKey, value] of currentBucket) {
+      //     if (indexKey === key) return value;
+      //   }
+    }
+    return "not found";
+  }
+
+  keys() {
+    if (!this.data.length) {
+      return undefined;
+    }
+    const keys = [];
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) {
+        for (let [key, value] of this.data[i]) {
+          keys.push(key);
+        }
+      }
+    }
+    return keys;
+
+    // let result = [];
+    // // loop through all the elements
+    // for (let i = 0; i < this.data.length; i++) {
+    //   // if it's not an empty memory cell
+    //   if (this.data[i] && this.data[i].length) {
+    //     // but also loop through all the potential collisions
+    //     if (this.data.length > 1) {
+    //       for (let j = 0; j < this.data[i].length; j++) {
+    //         result.push(this.data[i][j][0]);
+    //       }
+    //     } else {
+    //       result.push(this.data[i][0]);
+    //     }
+    //   }
+    // }
+    // return result;
   }
 }
 
-const a1 = new Arrays();
-a1.push(3);
-a1.push(4);
-a1.push(8);
-a1.push(18);
-a1.push(80);
-a1.push(9);
-// a1.pop();
-// a1.pop();
-// console.log(a1.pop());
-a1.delete(1);
-console.log(a1);
+const hashmap = new Hashmap(2);
+hashmap.set("hey", 22);
+hashmap.set("heys", 23);
+hashmap.set("heyss", 212);
+hashmap.set("apple", 12);
+hashmap.set("apples", 112);
+console.log(hashmap.get("heys"));
+console.log(hashmap.keys());

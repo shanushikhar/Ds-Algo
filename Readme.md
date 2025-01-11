@@ -1,3 +1,3 @@
-# creation of Array
+# creation of Hashmap
 
-## includes methods such as `push`, `pop`, `delete`
+## includes methods such as `set`, `get`
